@@ -25,7 +25,48 @@ if uploaded_file:
         else:
             row = df.iloc[df_index]
 
-            st.subheader("Preview")
-            st.write("**Opportunity Title:**", row.get("opportunity title", "N/A"))
-            st.write("**Duration:**", row.get("duration of internship", "N/A"))
-            st.write("**Preferred Background:**", row.get("preferred academic background", "N/A"))
+            title = row.get("opportunity title", "N/A")
+duration = row.get("duration of internship", "N/A")
+background = row.get("preferred academic background", "N/A")
+
+st.subheader("Opportunity Details")
+st.write(f"**Title:** {title}")
+st.write(f"**Duration Type:** {duration}")
+st.write("**Host LC:** M.A.H.E.")
+
+st.subheader("Eligibility")
+st.write(f"**Preferred Background:** {background}")
+st.write("**Minimum Study Level:** Bachelor")
+
+st.subheader("Logistics")
+
+if duration.lower() == "mid term":
+    stipend = 6500
+else:
+    stipend = 0
+
+st.write(f"**Gross Salary:** INR {stipend} / month")
+
+jd_text = f"""
+# {title}
+
+## Organization
+M.A.H.E., Manipal, Karnataka, India
+
+## Role Details
+Duration Type: {duration}
+
+## Eligibility
+Preferred Background: {background}
+Minimum Study Level: Bachelor
+
+## Logistics
+Stipend: INR {stipend} / month
+"""
+
+st.download_button(
+    label="Download JD",
+    data=jd_text,
+    file_name="Job_Description.txt",
+    mime="text/plain"
+)
