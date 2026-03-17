@@ -1,10 +1,8 @@
 import streamlit as st
 
-st.set_page_config(page_title="AIESEC EXPA Helper", layout="centered")
-
 st.title("AIESEC EXPA Helper – IGTa")
 
-st.markdown("### Select Operation")
+st.write("Choose a module")
 
 col1, col2 = st.columns(2)
 
